@@ -2,6 +2,7 @@ import mongoose, { Model } from "mongoose";
 import bcrypt from "bcrypt";
 
 export interface UserDocument extends mongoose.Document {
+  id: String;
   email: string;
   name: string;
   password: string;
@@ -49,7 +50,6 @@ userSchema.methods.comparePassword = async function (
   return bcrypt.compare(candidatePassword, user.password);
 };
 
-type Usermodel = Model<UserDocument, {}, UserMethods>;
-const User = mongoose.model<UserDocument, Usermodel>("User", userSchema);
+const User = mongoose.model<UserDocument>("User", userSchema);
 
 export default User;

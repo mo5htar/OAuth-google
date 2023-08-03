@@ -6,4 +6,5 @@ const app = express();
 //to parsing incoming req body to json
 app.use(express.json());
 
-app.use("/v1/users", routeUser);
+app.use("/api/v1/user", routeUser);
+app.use("/api/v1/oAuth/google");
